@@ -63,10 +63,11 @@
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ],
-        "post-create-project-cmd": [
             "openssl genrsa -out storage/oauth-private.key 4096",
             "openssl rsa -in storage/oauth-private.key -pubout > storage/oauth-public.key",
+        ],
+        "post-create-project-cmd": [
+            
             "@php artisan key:generate --ansi",
              "@php artisan migrate",
             "@php artisan passport:install"
