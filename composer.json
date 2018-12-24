@@ -7,11 +7,19 @@
         "laravel"
     ],
     "license": "MIT",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:conversoft/laravue.git",
+            "no-api": true
+        }
+    ],
     "require": {
         "php": "^7.1.3",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.7.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",,
+        "conversoft/laravue": "dev-master"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
@@ -56,6 +64,8 @@
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
+            "openssl genrsa -out storage/oauth-private.key 4096",
+            "openssl rsa -in storage/oauth-private.key -pubout > storage/oauth-public.key",
             "@php artisan key:generate --ansi"
         ]
     }
